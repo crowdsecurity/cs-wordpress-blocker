@@ -20,7 +20,7 @@ Text Domain: crowdsec-wp
 
 
 defined ('ABSPATH') or die ('Error');
-define('CROWDWATCH_DEFAULT_DB_PATH', '/var/run/crowdsec/crowdwatch.db');
+define('CROWDWATCH_DEFAULT_DB_PATH', '/var/lib/crowdsec/data/crowdwatch.db');
 
 if ( file_exists( dirname(__FILE__) . '/vendor/autoload.php' )) {
     require_once dirname(__FILE__) . '/vendor/autoload.php';
