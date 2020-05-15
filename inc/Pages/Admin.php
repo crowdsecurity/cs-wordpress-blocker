@@ -98,8 +98,8 @@ class Admin extends BaseController
 		$args = array(
 			array(
 				'id' => 'crowdsec_admin_index',
-				'title' => 'Crowdwatch  configuration',
-				'callback' => array( $this->callbacks_mngr, 'crowdwatchSectionManager' ),
+				'title' => 'CrowdSec configuration',
+				'callback' => array( $this->callbacks_mngr, 'crowdSecSectionManager' ),
 				'page' => 'crowdsec_settings'
 			),
 			array(
@@ -119,7 +119,7 @@ class Admin extends BaseController
 		$args = array(
 			array(
 				'id' => 'crowdsec_activate',
-				'title' => 'Activate Crowdwatch decision pull',
+				'title' => 'Activate CrowdSec query',
 				'callback' => array( $this->callbacks_mngr, 'crowdSecCheckboxField' ),
 				'page' => 'crowdsec_settings',
 				'section' => 'crowdsec_admin_index',
@@ -141,13 +141,13 @@ class Admin extends BaseController
 			),
 			array(
 				'id' => 'crowdsec_db_file',
-				'title' => 'CrowdSec db file',
+				'title' => 'CrowdSec DB file',
 				'callback' => array( $this->callbacks_mngr, 'sqliteInputboxField' ),
 				'page' => 'crowdsec_settings',
 				'section' => 'crowdsec_admin_index',
 				'args' => array(
 					'label_for' => 'crowdsec_db_file',
-					'placeholder' => 'Crowdwatch DB file',
+					'placeholder' => 'CrowdSec DB file',
 					
 				)
 			)

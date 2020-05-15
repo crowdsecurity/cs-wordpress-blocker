@@ -47,14 +47,9 @@ class ManagerCallbacks extends BaseController
         echo '<input type="text" class="regular-text" name="' . $name . '" value="'. $value . '" placeholder="' . $placeholder . '">';
     }
 
-    public function crowdsecSectionManager()
+    public function crowdSecSectionManager()
     {
-        echo 'Manage your crowdsec configuration';
-    }
-    
-    public function crowdwatchSectionManager()
-    {
-        echo 'Manage your crowdwatch configuration';
+        echo 'Manage your CrowdSec configuration';
     }
 
     public function generalSectionManager()

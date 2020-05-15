@@ -23,7 +23,7 @@
         #$this->mySqlInsertIp = "REPLACE INTO " . CROWDSEC_TABLE_NAME . " (ip_addr,timestamp) VALUES(%s,%d)";
 
         $this->sources_callback = array(
-            "crowdwatch_db" => array ($this, 'apply_filter_from_sqlite'),
+            "crowdsec_db" => array ($this, 'apply_filter_from_sqlite'),
             "crowdsec_api" => array ($this, 'apply_filter_from_crowdsec_api')
         );
 
@@ -62,7 +62,7 @@
         }
 
 
-        // iterate all possible sources of data (ie. crowdwatch_db, crowdsec_api ...)
+        // iterate all possible sources of data (ie. crowdsec_db, crowdsec_api ...)
         foreach ($sources as $k => $v) {
             $block = false;
             if ($v["active"]) {
@@ -102,7 +102,7 @@
         if (!$found) {
             return array(false, "");
         }
-        error_log("crowdwatch-wp: ip $this->remote_addr found in wordpress cache");
+        error_log("crowdsec-wp: ip $this->remote_addr found in wordpress cache");
         return array(true, $found);
     }
 
@@ -113,12 +113,12 @@
     function apply_filter_from_sqlite($db_path){
        
         if ( ! isset($db_path)) {
-            error_log("crowdwatch-wp: not crowdwatch database file set");
+            error_log("crowdsec-wp: not crowdsec database file set");
             return array(false, "");
         }
     
         if ( ! file_exists($db_path)) {
-            error_log("crowdwatch-wp: crowdwatch db file $db_path doesn't exist. Can't take decision");
+            error_log("crowdsec-wp: crowdsec db file $db_path doesn't exist. Can't take decision");
             return array(false, "");
         }
 
@@ -128,7 +128,7 @@
         if ($result) {
             $measure = $result["measure_type"];
             $until = $result["until"];
-            error_log("crowdwatch-wp: ip $this->remote_addr found in crowdwatch db : $measure");
+            error_log("crowdsec-wp: ip $this->remote_addr found in crowdsec db : $measure");
             return array(true, $measure, $until);
         }
         return array(false, "");

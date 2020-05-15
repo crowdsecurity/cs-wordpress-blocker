@@ -18,30 +18,21 @@ Wordpress plugin
 
 ### Settings
 
-##### CrowdWall (Not activate by default)
+##### Crowdsec (Activate by default)
 
-- You can activate or not the CrowdWall data query
-- If you have activated Crowdsec PULL, please fill your API Token
+- You can activate or not the CrowdSec data query (you must have a crowdsec instance running on your host)
+- If this option is activated, please fill the path to crowdsec database file
 
-##### Crowdwatch (Activate by default)
-
-- You can activate or not the CrowdWatch data query (you must have a crowdwatch instance running on your host)
-- If this option is activated, please fill the path to crowdwatch database file
+:warning: If you disable the Crowdsec decision pull, don't forget to `Refresh Cache`
 
 ##### General
 
  - Activate or not the block on the backend also
  
-The cache can be flushed manually by cliking the `Refresh Cache` button. 
+The cache can be flushed manually by clicking the `Refresh Cache` button. 
 
 ### Dashboard
 
-Currently, the dashboard contains only a table with all IPs that are actually store in cache.
+Currently, the dashboard contains only a table with all IPs that are actually stored in cache.
 
-## Test
-
-If you want to contribute or test the plugin, please `cd ./tests/` and run `docker-compose up -d` . 
-Then visit localhost:80 to set up wordpress
-
-When the plugins will be uploaded in wordpress, its folder will be located under : `wordpress/wp-content/plugins/crowdsec-wp` 
 

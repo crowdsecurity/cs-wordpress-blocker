@@ -1,11 +1,11 @@
 {
     "name": "crowdsec/crowdsec-wp",
-    "description": "Wordpress plugin to reject IP detected as malicious by crowdwatch or dynafw",
+    "description": "Wordpress plugin to reject IP detected as malicious by CrowdSec",
     "type": "project",
     "authors": [
         {
-            "name": "JohnDoe",
-            "email": "johndoe@crowdsiem.com"
+            "name": "CrowdSec",
+            "email": ""
         }
     ],
     "require": {},

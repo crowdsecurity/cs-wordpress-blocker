@@ -21,7 +21,7 @@ Text Domain: crowdsec-wp
 
 
 defined ('ABSPATH') or die ('Error');
-define('CROWDWATCH_DEFAULT_DB_PATH', '/var/lib/crowdsec/data/crowdsec.db');
+define('CROWDSEC_DEFAULT_DB_PATH', '/var/lib/crowdsec/data/crowdsec.db');
 
 if ( file_exists( dirname(__FILE__) . '/vendor/autoload.php' )) {
     require_once dirname(__FILE__) . '/vendor/autoload.php';
@@ -53,7 +53,7 @@ function activate_crowdsec_plugin()
     
     // default option
     add_option("cs_is_activated", 1);
-    add_option("crowdsec_db_file", CROWDWATCH_DEFAULT_DB_PATH);
+    add_option("crowdsec_db_file", CROWDSEC_DEFAULT_DB_PATH);
     add_option("crowdsec_activate", "1");
     add_option("crowd_activate_on_backend", "0");
     add_option("cache_successfully_refreshed", "1");
@@ -106,7 +106,7 @@ if ($activate_on_backend === "1") {
 function blockIp() {
 
     if (isset($_SESSION['phrase'])) {
-        error_log("crowdwatch-wp: " . $_SERVER["REMOTE_ADDR"] . " is in captcha mode");
+        error_log("crowdsec-wp: " . $_SERVER["REMOTE_ADDR"] . " is in captcha mode");
         if (checkCaptcha() === false) {
             echo "Invalid captcha!";
             $captchaOk = setCaptcha();
@@ -122,8 +122,8 @@ function blockIp() {
     $activated = get_option("cs_is_activated");
     $crowdsec_activated = get_option("crowdsec_activate");
     $cs_source = array(
-        "crowdwatch_db" => array(
-            "name" => "crowdwatch_db",
+        "crowdsec_db" => array(
+            "name" => "crowdsec_db",
             "args" => array(
                 $db_file
             ),
