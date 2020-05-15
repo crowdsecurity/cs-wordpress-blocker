@@ -40,7 +40,7 @@ class ManagerCallbacks extends BaseController
         $name = $args["label_for"];
         $placeholder = $args["placeholder"];
         $inputBox = get_option($name);
-        $value = esc_attr(get_option("crowdwatch_db_file"));
+        $value = esc_attr(get_option("crowdsec_db_file"));
         if ( ! file_exists($value)) {
             echo "SQLite database file " . $value . " not found.\n";
         }

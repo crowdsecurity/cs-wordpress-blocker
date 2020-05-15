@@ -80,7 +80,7 @@ class Admin extends BaseController
             ),
             array(
 				'option_group' => 'crowdsec_plugin_settings',
-				'option_name' => 'crowdwatch_db_file',
+				'option_name' => 'crowdsec_db_file',
 				'callback' => array( $this->callbacks_mngr, 'SqliteFileSanitize' )
 			),
 			array(
@@ -115,7 +115,7 @@ class Admin extends BaseController
 
 	public function setFields()
 	{
-		$current_db = get_option("crowdwatch_db_file");
+		$current_db = get_option("crowdsec_db_file");
 		$args = array(
 			array(
 				'id' => 'crowdsec_activate',
@@ -140,13 +140,13 @@ class Admin extends BaseController
 				)
 			),
 			array(
-				'id' => 'crowdwatch_db_file',
+				'id' => 'crowdsec_db_file',
 				'title' => 'CrowdSec db file',
 				'callback' => array( $this->callbacks_mngr, 'sqliteInputboxField' ),
 				'page' => 'crowdsec_settings',
 				'section' => 'crowdsec_admin_index',
 				'args' => array(
-					'label_for' => 'crowdwatch_db_file',
+					'label_for' => 'crowdsec_db_file',
 					'placeholder' => 'Crowdwatch DB file',
 					
 				)
