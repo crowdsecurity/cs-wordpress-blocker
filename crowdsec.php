@@ -54,8 +54,7 @@ function activate_crowdsec_plugin()
     // default option
     add_option("cs_is_activated", 1);
     add_option("crowdwatch_db_file", CROWDWATCH_DEFAULT_DB_PATH);
-    add_option("crowdwatch_activate", "1");
-    add_option("crowdsec_activate", "0");
+    add_option("crowdsec_activate", "1");
     add_option("crowd_activate_on_backend", "0");
     add_option("cache_successfully_refreshed", "1");
     add_option("cache_is_empty", "1");
@@ -77,7 +76,7 @@ function deactivate_crowdsec_plugin()
     // clean option
     delete_option("cs_is_activated");
     delete_option("crowdwatch_db_file");
-    delete_option("crowdwatch_activate");
+    delete_option("crowdsec_activate");
     delete_option("crowd_activate_on_backend");
     delete_option("crowd_ip_expiration");
     delete_option("crowd_interval_flush");
@@ -121,14 +120,14 @@ function blockIp() {
     // get admin options
     $db_file = get_option("crowdwatch_db_file");
     $activated = get_option("cs_is_activated");
-    $crowdwatch_activated = get_option("crowdwatch_activate");
+    $crowdsec_activated = get_option("crowdsec_activate");
     $cs_source = array(
         "crowdwatch_db" => array(
             "name" => "crowdwatch_db",
             "args" => array(
                 $db_file
             ),
-            "active" => ($crowdwatch_activated === "1") ? true : false
+            "active" => ($crowdsec_activated === "1") ? true : false
         )
     );
 

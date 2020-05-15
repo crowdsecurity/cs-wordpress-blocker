@@ -75,7 +75,7 @@ class Admin extends BaseController
 		$args = array(
 			array(
 				'option_group' => 'crowdsec_plugin_settings',
-				'option_name' => 'crowdwatch_activate',
+				'option_name' => 'crowdsec_activate',
 				'callback' => array( $this->callbacks_mngr, 'checkboxSanitize' )
             ),
             array(
@@ -97,7 +97,7 @@ class Admin extends BaseController
 	{
 		$args = array(
 			array(
-				'id' => 'crowdwatch_admin_index',
+				'id' => 'crowdsec_admin_index',
 				'title' => 'Crowdwatch  configuration',
 				'callback' => array( $this->callbacks_mngr, 'crowdwatchSectionManager' ),
 				'page' => 'crowdsec_settings'
@@ -118,13 +118,13 @@ class Admin extends BaseController
 		$current_db = get_option("crowdwatch_db_file");
 		$args = array(
 			array(
-				'id' => 'crowdwatch_activate',
+				'id' => 'crowdsec_activate',
 				'title' => 'Activate Crowdwatch decision pull',
 				'callback' => array( $this->callbacks_mngr, 'crowdSecCheckboxField' ),
 				'page' => 'crowdsec_settings',
-				'section' => 'crowdwatch_admin_index',
+				'section' => 'crowdsec_admin_index',
 				'args' => array(
-					'label_for' => 'crowdwatch_activate',
+					'label_for' => 'crowdsec_activate',
 					'class' => 'ui-toggle'
 				)
 			),
@@ -141,10 +141,10 @@ class Admin extends BaseController
 			),
 			array(
 				'id' => 'crowdwatch_db_file',
-				'title' => 'Crowdwatch db file',
+				'title' => 'CrowdSec db file',
 				'callback' => array( $this->callbacks_mngr, 'sqliteInputboxField' ),
 				'page' => 'crowdsec_settings',
-				'section' => 'crowdwatch_admin_index',
+				'section' => 'crowdsec_admin_index',
 				'args' => array(
 					'label_for' => 'crowdwatch_db_file',
 					'placeholder' => 'Crowdwatch DB file',

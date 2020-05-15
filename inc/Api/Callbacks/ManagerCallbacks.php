@@ -26,8 +26,8 @@ class ManagerCallbacks extends BaseController
         //var_dump($input);
         $input = esc_attr($input);
         if ( ! file_exists($input)) {
-            $crowdwatch_activated = get_option("crowdwatch_activate");
-            if ($crowdwatch_activated) {
+            $crowdsec_activated = get_option("crowdsec_activate");
+            if ($crowdsec_activated) {
                 add_settings_error("SQL db file", "crowdsec_error", "SQLite database file " . $input . " not found.");
                 return $input;
             }
@@ -45,15 +45,6 @@ class ManagerCallbacks extends BaseController
             echo "SQLite database file " . $value . " not found.\n";
         }
         echo '<input type="text" class="regular-text" name="' . $name . '" value="'. $value . '" placeholder="' . $placeholder . '">';
-    }
-
-    public function ApiTokenInputboxField( $args )
-    {
-        $name = $args["label_for"];
-        $placeholder = $args["placeholder"];
-        $inputBox = get_option($name);
-        $value = esc_attr(get_option("crowdsec_api_token"));
-        echo '<input type="text" class="regular-text" name="' . $name . '" value="' . $value . '" placeholder="' . $placeholder . '">';
     }
 
     public function crowdsecSectionManager()
@@ -85,7 +76,7 @@ class ManagerCallbacks extends BaseController
         $name = $args['label_for'];
         $classes = $args['class'];
         $checkbox = get_option( $name );
-        $options = get_option( 'crowdwatch_activate' );
+        $options = get_option( 'crowdsec_activate' );
         echo '<div class="' . $classes . '"><input type="checkbox" id="' . $name . '" name="' . $name . '" value="' . $options . '" class="" ' . ($checkbox ? 'checked' : '') . '><label for="' . $name . '"><div></div></label></div>';
     }
 
