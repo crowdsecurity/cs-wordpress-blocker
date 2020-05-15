@@ -75,16 +75,6 @@ class Admin extends BaseController
 		$args = array(
 			array(
 				'option_group' => 'crowdsec_plugin_settings',
-				'option_name' => 'crowdsec_api_token',
-				'callback' => array( $this->callbacks_mngr, 'inputboxSanitize' )
-            ),
-            array(
-				'option_group' => 'crowdsec_plugin_settings',
-				'option_name' => 'crowdsec_activate',
-				'callback' => array( $this->callbacks_mngr, 'checkboxSanitize' )
-			),
-			array(
-				'option_group' => 'crowdsec_plugin_settings',
 				'option_name' => 'crowdwatch_activate',
 				'callback' => array( $this->callbacks_mngr, 'checkboxSanitize' )
             ),
@@ -107,12 +97,6 @@ class Admin extends BaseController
 	{
 		$args = array(
 			array(
-				'id' => 'crowdsec_admin_index',
-				'title' => 'Crowdsec configuration',
-				'callback' => array( $this->callbacks_mngr, 'crowdsecSectionManager' ),
-				'page' => 'crowdsec_settings'
-            ),
-			array(
 				'id' => 'crowdwatch_admin_index',
 				'title' => 'Crowdwatch  configuration',
 				'callback' => array( $this->callbacks_mngr, 'crowdwatchSectionManager' ),
@@ -132,23 +116,11 @@ class Admin extends BaseController
 	public function setFields()
 	{
 		$current_db = get_option("crowdwatch_db_file");
-		$api_token = get_option("crowdsec_api_token");
 		$args = array(
-			array(
-				'id' => 'crowdsec_activate',
-				'title' => 'Activate Crowdsec PULL',
-				'callback' => array( $this->callbacks_mngr, 'checkboxField' ),
-				'page' => 'crowdsec_settings',
-				'section' => 'crowdsec_admin_index',
-				'args' => array(
-					'label_for' => 'crowdsec_activate',
-					'class' => 'ui-toggle'
-				)
-			),
 			array(
 				'id' => 'crowdwatch_activate',
 				'title' => 'Activate Crowdwatch decision pull',
-				'callback' => array( $this->callbacks_mngr, 'checkboxField' ),
+				'callback' => array( $this->callbacks_mngr, 'crowdSecCheckboxField' ),
 				'page' => 'crowdsec_settings',
 				'section' => 'crowdwatch_admin_index',
 				'args' => array(
@@ -159,23 +131,12 @@ class Admin extends BaseController
 			array(
 				'id' => 'crowd_activate_on_backend',
 				'title' => 'Activate on backend',
-				'callback' => array( $this->callbacks_mngr, 'checkboxField' ),
+				'callback' => array( $this->callbacks_mngr, 'backendActivateCheckBoxField' ),
 				'page' => 'crowdsec_settings',
 				'section' => 'crowd_admin_index',
 				'args' => array(
 					'label_for' => 'crowd_activate_on_backend',
 					'class' => 'ui-toggle'
-				)
-			),
-			array(
-				'id' => 'crowdsec_api_token',
-				'title' => 'Crowdsec API Token',
-				'callback' => array( $this->callbacks_mngr, 'ApiTokenInputboxField' ),
-				'page' => 'crowdsec_settings',
-				'section' => 'crowdsec_admin_index',
-				'args' => array(
-					'label_for' => 'crowdsec_api_token',
-					'placeholder' => 'Crowdsec API Token'
 				)
 			),
 			array(

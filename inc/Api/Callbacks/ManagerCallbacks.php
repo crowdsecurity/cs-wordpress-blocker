@@ -71,12 +71,22 @@ class ManagerCallbacks extends BaseController
         echo "General configuration for your plugin";
     }
 
-    public function checkboxField( $args )
+    public function backendActivateCheckBoxField( $args )
     {
         $name = $args['label_for'];
         $classes = $args['class'];
         $checkbox = get_option( $name );
-        $options = get_option( 'crowdsec_api_token' );
+        $options = get_option( 'crowd_activate_on_backend' );
         echo '<div class="' . $classes . '"><input type="checkbox" id="' . $name . '" name="' . $name . '" value="' . $options . '" class="" ' . ($checkbox ? 'checked' : '') . '><label for="' . $name . '"><div></div></label></div>';
     }
+
+    public function crowdSecCheckboxField( $args )
+    {
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $checkbox = get_option( $name );
+        $options = get_option( 'crowdwatch_activate' );
+        echo '<div class="' . $classes . '"><input type="checkbox" id="' . $name . '" name="' . $name . '" value="' . $options . '" class="" ' . ($checkbox ? 'checked' : '') . '><label for="' . $name . '"><div></div></label></div>';
+    }
+
 }

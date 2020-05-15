@@ -10,17 +10,18 @@ session_start();
 
 Plugin Name: Crowdsec
 Plugin URI: https://www.crowdsec.net/
-Description: Wordpressp plugin that doesn't allow IP according to crowdwatch or dynafw
+Description: Wordpressp plugin that doesn't allow IP according to crowdsec
 Version 1.0.0
-Author: JohnDoe
+Author: CrowdSec
 Author URI: https://www.crowdsec.net/
+Github: https://github.com/crowdsecurity/cs-wordpress-blocker
 License: MIT
 Text Domain: crowdsec-wp
 */
 
 
 defined ('ABSPATH') or die ('Error');
-define('CROWDWATCH_DEFAULT_DB_PATH', '/var/lib/crowdsec/data/crowdwatch.db');
+define('CROWDWATCH_DEFAULT_DB_PATH', '/var/lib/crowdsec/data/crowdsec.db');
 
 if ( file_exists( dirname(__FILE__) . '/vendor/autoload.php' )) {
     require_once dirname(__FILE__) . '/vendor/autoload.php';
@@ -77,13 +78,9 @@ function deactivate_crowdsec_plugin()
     delete_option("cs_is_activated");
     delete_option("crowdwatch_db_file");
     delete_option("crowdwatch_activate");
-    delete_option("crowdsec_activate");
     delete_option("crowd_activate_on_backend");
     delete_option("crowd_ip_expiration");
     delete_option("crowd_interval_flush");
-    delete_option("crowdsec_api_token");
-
-
 }
 register_deactivation_hook( __FILE__, 'deactivate_crowdsec_plugin');
 
@@ -122,12 +119,9 @@ function blockIp() {
 
 
     // get admin options
-    $api_token = get_option("crowdsec_api_token");
     $db_file = get_option("crowdwatch_db_file");
     $activated = get_option("cs_is_activated");
     $crowdwatch_activated = get_option("crowdwatch_activate");
-    $crowdsec_activated = get_option("crowdsec_activate");
-
     $cs_source = array(
         "crowdwatch_db" => array(
             "name" => "crowdwatch_db",
@@ -135,13 +129,6 @@ function blockIp() {
                 $db_file
             ),
             "active" => ($crowdwatch_activated === "1") ? true : false
-        ),
-        "crowdsec_api" => array(
-            "name" => "crowdsec_api",
-            "active" => ($crowdwatch_activated === "1") ? true : false,
-            "args" => array(
-                $api_token
-            )
         )
     );
 
