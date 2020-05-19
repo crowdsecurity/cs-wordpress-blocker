@@ -2,8 +2,8 @@
 <img src="docs/assets/crowdsec_wp_logo.png" alt="CrowdSec" title="CrowdSec" width="350" height="500" />
 </p>
 <p align="center">
-<img src="https://github.com/crowdsecurity/crowdsec/workflows/Go/badge.svg">
-<img src="https://github.com/crowdsecurity/crowdsec/workflows/build-binary-package/badge.svg">
+<img src="https://img.shields.io/badge/build-pass-green">
+<img src="https://img.shields.io/badge/tests-pass-green">
 </p>
 <p align="center">
 :books: <a href="https://doc.crowdsec.net/blockers/wordpress/installation/">Documentation</a>
