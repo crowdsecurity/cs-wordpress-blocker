@@ -1,5 +1,5 @@
 <p align="center">
-<img src="docs/assets/crowdsec_wp_logo.png" alt="CrowdSec" title="CrowdSec" width="500" height="600" />
+<img src="docs/assets/crowdsec_wp_logo.png" alt="CrowdSec" title="CrowdSec" width="350" height="600" />
 </p>
 
 
