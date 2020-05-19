@@ -1,6 +1,5 @@
 <p align="center">
 <img src="docs/assets/crowdsec_wp_logo.png" alt="CrowdSec" title="CrowdSec" width="350" height="500" />
-<h1> CrowdSec Wordpress Blocker </h1>
 </p>
 <p align="center">
 <img src="https://github.com/crowdsecurity/crowdsec/workflows/Go/badge.svg">
@@ -13,6 +12,7 @@
 </p>
 
 
+# CrowdSec Wordpress Blocker
 
 ## Installation
 
