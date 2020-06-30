@@ -18,11 +18,13 @@
 
 ### Prepare the .zip folder
 
-```make zip```
+```bash
+make zip
+```
 
 ### Deploy the plugin
 
-```
+```bash
 - Go to wordpress backend
 - Go to 'Plugins' -> 'Add New' And click on "Upload Plugin" (at the top of the page)
 - Choose your zipped plugins file and install it
