@@ -12,7 +12,7 @@
 </p>
 
 
-# CrowdSec Wordpress Blocker (for old CrowdSec versions 0.x, else use the new bouncer)
+# [DEPRECATED] CrowdSec Wordpress Blocker
 
 > Important warning: This bouncer works only with 0.x versions of CrowdSec.
 > From 1.x versions, You have to use the [new official WordPress Bouncer](https://github.com/crowdsecurity/cs-wordpress-bouncer).
